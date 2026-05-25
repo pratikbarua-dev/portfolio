@@ -18,12 +18,11 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata = {
-  title: "Pratik Barua | Software Engineer, Web Developer & CEO",
-  description: "Sleek, high-contrast premium developer portfolio highlighting MERN stack, Next.js, and self-hosted infrastructure architectures.",
-  metadataBase: new URL("https://coder-portfolio.dev"),
+  title: "Pratik Barua | Software Engineering Student & MERN Stack Developer",
+  description: "B.Sc. in Software Engineering student at DIU (CGPA 4.00/4.00) & MERN Stack Developer. Alumni of Programming Hero, specializing in full-stack architectures, high-concurrency voice AI agents, and CI/CD pipelines.",
   openGraph: {
-    title: "Pratik Barua | Software Engineer, Web Developer & CEO",
-    description: "Sleek, high-contrast premium developer portfolio.",
+    title: "Pratik Barua | Software Engineering Student & MERN Stack Developer",
+    description: "B.Sc. in Software Engineering student at DIU (CGPA 4.00/4.00) & MERN Stack Developer. Alumni of Programming Hero.",
     type: "website",
   },
 };

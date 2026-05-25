@@ -33,10 +33,11 @@ export default function LoadingScreen() {
         {/* High-tech Glowing Progress Bar */}
         <div className="w-48 h-[2px] bg-[#111] rounded-full overflow-hidden relative shadow-[0_0_10px_rgba(255,85,0,0.1)] border border-white/5">
           <motion.div
-            initial={{ width: "0%" }}
-            animate={{ width: "100%" }}
+            initial={{ scaleX: 0 }}
+            animate={{ scaleX: 1 }}
             transition={{ duration: 2.2, ease: "easeInOut" }}
-            className="h-full bg-gradient-to-r from-primary to-amber-500 shadow-[0_0_12px_#FF5500]"
+            style={{ transformOrigin: "left" }}
+            className="h-full w-full bg-gradient-to-r from-primary to-amber-500 shadow-[0_0_12px_#FF5500]"
           />
         </div>
       </div>
