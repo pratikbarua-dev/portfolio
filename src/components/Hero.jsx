@@ -5,6 +5,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import PrimaryButton from "./PrimaryButton";
 import OutlineButton from "./OutlineButton";
+import Image from "next/image";
 
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
@@ -222,7 +223,7 @@ export default function Hero() {
 
             {/* Inner Content Block */}
             <div className="relative w-full h-full bg-[#080808]/95 p-2 rounded-[14.5px]">
-              <img
+              <Image
                 src="/hero.png"
                 alt="Quantum Coder IDE Holographic Workspace"
                 className="w-full h-full object-cover rounded-lg"
