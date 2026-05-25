@@ -118,8 +118,9 @@ export default function Hero() {
     e.preventDefault();
     const target = document.querySelector("#projects");
     if (target) {
+      const targetPosition = target.getBoundingClientRect().top + window.scrollY - 64;
       window.scrollTo({
-        top: target.offsetTop - 64,
+        top: targetPosition,
         behavior: "smooth",
       });
     }
@@ -129,8 +130,9 @@ export default function Hero() {
     e.preventDefault();
     const target = document.querySelector("#contact");
     if (target) {
+      const targetPosition = target.getBoundingClientRect().top + window.scrollY - 64;
       window.scrollTo({
-        top: target.offsetTop - 64,
+        top: targetPosition,
         behavior: "smooth",
       });
     }

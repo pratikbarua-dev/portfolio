@@ -70,8 +70,9 @@ export default function Navigation() {
     setIsMenuOpen(false);
     const target = document.querySelector(href);
     if (target) {
+      const targetPosition = target.getBoundingClientRect().top + window.scrollY - 64;
       window.scrollTo({
-        top: target.offsetTop - 64,
+        top: targetPosition,
         behavior: 'smooth',
       });
     }
