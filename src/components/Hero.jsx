@@ -163,11 +163,11 @@ export default function Hero() {
           {/* Heading */}
           <h1 
             ref={headingRef}
-            className="text-4xl sm:text-5xl lg:text-[62px] font-black text-white leading-[1.15] tracking-tight uppercase flex flex-col items-start justify-start select-none"
+            className="text-4xl sm:text-5xl lg:text-[62px] font-black text-white leading-[1.15] tracking-tight uppercase select-none"
           >
-            <span>I BUILD <span className="text-primary font-mono select-all">SYSTEMS</span></span>
+            <span className="block">I BUILD <span className="text-primary font-mono select-all">SYSTEMS</span></span>
             <span 
-              className="text-primary font-mono h-[1.25em] flex items-center min-w-[200px]"
+              className="text-primary font-mono block min-h-[1.2em] mt-1"
               aria-live="polite"
             >
               {currentText}
