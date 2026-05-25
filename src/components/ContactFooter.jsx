@@ -17,8 +17,8 @@ export default function ContactFooter() {
     e.preventDefault();
     setStatus('SENDING');
 
-    const botToken = '8914687967:AAEZm-EGMGD8vLs6sOTjn59WZtcp6Uomayk';
-    const chatId = '6856606568';
+    const botToken = process.env.NEXT_PUBLIC_TELEGRAM_BOT_TOKEN;
+    const chatId = process.env.NEXT_PUBLIC_TELEGRAM_CHAT_ID;
     
     // Format a beautifully structured Markdown message for Telegram
     const telegramMessage = `📬 *New Portfolio Message Submission*\n\n` +
