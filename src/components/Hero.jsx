@@ -1,5 +1,6 @@
 "use client";
-import React, { useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
+import { motion } from "framer-motion";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import PrimaryButton from "./PrimaryButton";
@@ -71,6 +72,48 @@ export default function Hero() {
     return () => ctx.revert();
   }, []);
 
+  const [currentText, setCurrentText] = useState("");
+  const [phraseIndex, setPhraseIndex] = useState(0);
+  const [isDeleting, setIsDeleting] = useState(false);
+
+  const phrases = [
+    "THAT SCALE & ENGAGE.",
+    "THAT USERS LOVE.",
+    "THAT HANDLE MILLIONS.",
+    "THAT CONVERT & GROW.",
+    "THAT SHIP FAST."
+  ];
+
+  useEffect(() => {
+    let timer;
+    const currentPhrase = phrases[phraseIndex];
+
+    if (isDeleting) {
+      // Delete smoothly character-by-character (40-60ms -> 50ms)
+      timer = setTimeout(() => {
+        setCurrentText((prev) => prev.slice(0, -1));
+      }, 50);
+    } else {
+      // Type character-by-character (70-90ms -> 80ms)
+      timer = setTimeout(() => {
+        setCurrentText((prev) => currentPhrase.slice(0, prev.length + 1));
+      }, 80);
+    }
+
+    // Handles pauses and transition states
+    if (!isDeleting && currentText === currentPhrase) {
+      // Pause for 1.8 seconds upon completion
+      timer = setTimeout(() => {
+        setIsDeleting(true);
+      }, 1800);
+    } else if (isDeleting && currentText === "") {
+      setIsDeleting(false);
+      setPhraseIndex((prev) => (prev + 1) % phrases.length);
+    }
+
+    return () => clearTimeout(timer);
+  }, [currentText, isDeleting, phraseIndex]);
+
   const handleScrollToProjects = (e) => {
     e.preventDefault();
     const target = document.querySelector("#projects");
@@ -120,9 +163,22 @@ export default function Hero() {
           {/* Heading */}
           <h1 
             ref={headingRef}
-            className="text-4xl sm:text-5xl lg:text-[62px] font-black text-foreground leading-[1.1] tracking-tight uppercase"
+            className="text-4xl sm:text-5xl lg:text-[62px] font-black text-white leading-[1.15] tracking-tight uppercase flex flex-col items-start justify-start select-none"
           >
-            I BUILD <span className="text-primary font-mono select-all">SYSTEMS</span> THAT SCALE & ENGAGE.
+            <span>I BUILD <span className="text-primary font-mono select-all">SYSTEMS</span></span>
+            <span 
+              className="text-primary font-mono h-[1.25em] flex items-center min-w-[200px]"
+              aria-live="polite"
+            >
+              {currentText}
+              <motion.span
+                animate={{ opacity: [1, 0, 1] }}
+                transition={{ repeat: Infinity, duration: 0.8, ease: "easeInOut" }}
+                className="ml-1 font-light text-primary"
+              >
+                |
+              </motion.span>
+            </span>
           </h1>
 
           {/* Subtext */}
